@@ -15,6 +15,9 @@ export default function Navbar(props) {
                     <li onClick={() => props.onChangePage("game")} className={classes["nav-item"]}>
                         Game
                     </li>
+                    <li onClick={() => props.onChangePage("listGames")} className={classes["nav-item"]}>
+                        List saved games
+                    </li>
                 </ul>
             </div>
         </div>

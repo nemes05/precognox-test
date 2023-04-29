@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.general-btn {
+    @apply rounded-lg h-12 m-3 w-48 bg-slate-700 font-bold text-lg text-slate-300 relative overflow-hidden hover:bg-slate-900
+}
+
+.btn-container {
+    @apply flex justify-center
+}

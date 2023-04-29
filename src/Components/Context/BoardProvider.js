@@ -1,12 +1,12 @@
+//A component to provide the context
 import React, { useEffect, useState } from "react";
 
 import BoardContext from "./board-ctx";
 import { saveBoardCall } from "./api-handler";
 
-const DUMMY_BOARD = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-
 export default function BoardProvider(props) {
-    const [board, setBoard] = useState(DUMMY_BOARD);
+    const [board, setBoard] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    const [alreadySaved, setAlreadySaved] = useState({ saved: false, id: null });
     const [winner, setWinner] = useState(0);
 
     const updateBoardHandler = (index, player) => {
@@ -68,11 +68,30 @@ export default function BoardProvider(props) {
         }
     };
 
+    const loadBoardHandler = (array) => {
+        setBoard(array);
+    };
+
+    const alreadySavedHandler = (id) => {
+        setAlreadySaved({ saved: true, id: id });
+    };
+
+    //The function that makes the API call
+    const overWriteHandler = () => {
+        //     overWriteBoard(alreadySaved.id, board)
+        //         .then(() => alert("Overwrite succesfull"))
+        //         .catch((error) => alert(error.message));
+    };
+
     const boardCtx = {
         currentBoard: board,
         winner: winner,
         saveBoard: saveBoardHandler,
         updateBoard: updateBoardHandler,
+        loadNewBoard: loadBoardHandler,
+        setSaved: alreadySavedHandler,
+        getSaved: alreadySaved.saved,
+        overWriteSave: overWriteHandler,
     };
 
     return <BoardContext.Provider value={boardCtx}>{props.children}</BoardContext.Provider>;
