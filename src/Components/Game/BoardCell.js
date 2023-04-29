@@ -4,6 +4,7 @@ import React from "react";
 import classes from "./BoardCell.module.css";
 
 export default function BoardCell(props) {
+    //Handels the moves of the players
     const currentMove = (event) => {
         if (event.target.innerHTML !== "") {
             alert("Not a valid move!");

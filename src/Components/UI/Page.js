@@ -1,12 +1,13 @@
+//The main page that renders the components
 import React, { useContext, useState } from "react";
 
 import classes from "./Page.module.css";
-
 import Card from "./Card";
 import Navbar from "./Navbar";
 import Board from "../Game/Board";
-import BoardContext from "../Context/board-ctx";
 import SaveForm from "../Game/SaveForm";
+import GamesList from "../Game/GamesList";
+import BoardContext from "../Context/board-ctx";
 
 export default function Page() {
     const boardCtx = useContext(BoardContext);
@@ -25,8 +26,9 @@ export default function Page() {
             <Navbar onChangePage={(page) => changePageHandler(page)} />
             <Card>
                 {page === "home" && <p className={classes["welcome-text"]}>Welcome to the tic-tac-toe game</p>}
-                {page === "game" && <Board onSave={saveHandler} board={boardCtx.currentBoard} />}
-                {page === "save" && <SaveForm onSave={changePageHandler} />}
+                {page === "game" && <Board showSave={true} onSave={saveHandler} board={boardCtx.currentBoard} />}
+                {page === "save" && <SaveForm onSave={(page) => changePageHandler(page)} />}
+                {page === "listGames" && <GamesList onLoad={(page) => changePageHandler(page)} />}
             </Card>
         </React.Fragment>
     );
