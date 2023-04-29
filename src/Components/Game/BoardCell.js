@@ -4,5 +4,18 @@ import React from "react";
 import classes from "./BoardCell.module.css";
 
 export default function BoardCell(props) {
-    return <button className={classes["board-cell"]}>X</button>;
+    const currentMove = (event) => {
+        if (event.target.innerHTML !== "") {
+            alert("Not a valid move!");
+            return;
+        }
+        const changeCell = +event.target.value;
+        props.onClick(changeCell);
+    };
+
+    return (
+        <button value={props.value} onClick={(event) => currentMove(event)} className={classes["board-cell"]}>
+            {props.children}
+        </button>
+    );
 }

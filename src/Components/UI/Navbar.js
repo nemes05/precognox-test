@@ -3,14 +3,18 @@ import React from "react";
 
 import classes from "./Navbar.module.css";
 
-export default function Navbar() {
+export default function Navbar(props) {
     return (
         <div className={classes["nav-container"]}>
             <div className={classes["nav-align"]}>
-                <div className={classes["nav-home"]}>HOME</div>
+                <div onClick={() => props.onChangePage("home")} className={classes["nav-home"]}>
+                    HOME
+                </div>
 
                 <ul className={classes["nav-list"]}>
-                    <li className={classes["nav-item"]}>Game</li>
+                    <li onClick={() => props.onChangePage("game")} className={classes["nav-item"]}>
+                        Game
+                    </li>
                 </ul>
             </div>
         </div>
