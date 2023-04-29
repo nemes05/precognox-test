@@ -18,6 +18,10 @@ export default function Board(props) {
         setPlayer1IsNext((prev) => !prev);
     };
 
+    const handleSave = () => {
+        props.onSave("save");
+    };
+
     const board = props.board.map((item, index) => (
         <BoardCell value={index} onClick={(index) => moveHandler(index)} key={index}>
             {item === 1 ? "X" : item === 2 ? "O" : ""}
@@ -25,8 +29,15 @@ export default function Board(props) {
     ));
 
     return (
-        <div className={classes["board-container"]}>
-            <div className={classes.board}>{board}</div>
-        </div>
+        <>
+            <div className={classes["board-container"]}>
+                <div className={classes.board}>{board}</div>
+            </div>
+            <div className={classes["btn-container"]}>
+                <button onClick={handleSave} className={classes["save-btn"]}>
+                    Save game
+                </button>
+            </div>
+        </>
     );
 }
