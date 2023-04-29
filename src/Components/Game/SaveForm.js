@@ -1,3 +1,4 @@
+//A component where we can save our progress
 import React, { useContext, useRef } from "react";
 
 import classes from "./SaveForm.module.css";
@@ -15,10 +16,16 @@ export default function SaveForm(props) {
         props.onSave("game");
     };
 
+    //Function call for overwrite
+    // const overWriteSave = () => {
+    //     boardCtx.overWriteSave();
+    //     props.onSave("game");
+    // };
+
     return (
         <form onSubmit={handleBoardSubmit} className={classes["save-form"]}>
             <input ref={nameInputRef} type="text" placeholder="Name the board" className={classes["name-input"]} />
-            <button type="submit" className={classes["save-btn"]}>
+            <button type="sumbit" className={classes["save-btn"]}>
                 Save game
             </button>
         </form>
