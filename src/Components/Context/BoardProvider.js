@@ -2,15 +2,21 @@ import React, { useState } from "react";
 
 import BoardContext from "./board-ctx";
 
-export default function BoardProvider(props) {
-    const [board, setBoard] = useState([]);
+const DUMMY_BOARD = [0, 0, 0, 1, 2, 2, 0, 0, 1];
 
-    const updateBoardHandler = (index) => {};
+export default function BoardProvider(props) {
+    const [board, setBoard] = useState(DUMMY_BOARD);
+
+    const updateBoardHandler = (index, player) => {
+        let newBoard = board;
+        newBoard[index] = player;
+        setBoard(newBoard);
+    };
 
     const boardCtx = {
         currentBoard: board,
         updateBoard: updateBoardHandler,
     };
 
-    return <BoardContext.Provider>{props.children}</BoardContext.Provider>;
+    return <BoardContext.Provider value={boardCtx}>{props.children}</BoardContext.Provider>;
 }
