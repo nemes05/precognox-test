@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-container {
+    @apply shadow-lg bg-slate-300
+}
+
+.nav-align {
+    @apply h-16 px-5 flex items-center justify-between
+}
+
+.nav-home {
+    @apply text-xl hover:text-slate-700 cursor-pointer
+}
+
+.nav-list {
+    @apply flex items-center gap-6
+}
+
+.nav-item {
+    @apply hover:text-slate-700 transition-colors cursor-pointer text-2xl
+}

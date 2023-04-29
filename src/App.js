@@ -1,7 +1,9 @@
 import "./App.css";
 
+import Page from "./Components/UI/Page";
+
 function App() {
-    return <div className="App"></div>;
+    return <Page></Page>;
 }
 
 export default App;
